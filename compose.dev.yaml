@@ -1,0 +1,16 @@
+services:
+  prox_auth:
+    build:
+      context: .
+      target: development
+    ports:
+      - 3000:3000
+    volumes:
+      - ./bin/db:/app/db
+    env_file:
+      - .env.development
+    develop:
+      watch:
+        # rebuild image and recreate service
+        - path: ./src
+          action: rebuild

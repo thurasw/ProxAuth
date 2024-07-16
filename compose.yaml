@@ -1,0 +1,14 @@
+services:
+  prox_auth:
+    build:
+      context: .
+      target: production
+    volumes:
+      - :/app/db
+    environment:
+      - PORT=3000
+      - DB_PATH=/app/db/auth.db
+      - COOKIE_SECRET=${COOKIE_SECRET?error}
+      - SECURE_COOKIE=true
+      - DOMAIN=thurasw.me
+      - AUTH_HOST=auth.thurasw.me
